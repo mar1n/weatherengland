@@ -42,7 +42,7 @@ class Api extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                    items.main.temp
+                    Math.round(items.main.temp - 273.15) 
             );
         }
     }
