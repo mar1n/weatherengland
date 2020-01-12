@@ -13,7 +13,7 @@ class Api extends React.Component {
     componentDidMount(props) {
         //console.log(this.props.city);
         const city = this.props.city;
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`)
             .then(res => res.json())
             .then(
                 (result) => {
