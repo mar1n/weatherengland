@@ -1,7 +1,5 @@
-import React from 'react'
-import {  Link } from 'react-router-dom'
-import City from './city'
-import Api from './api'
+import React from 'react';
+import Api from '../Api/Api';
 
 export default class AutoCompleteText extends React.Component {
     constructor(props) {
@@ -19,7 +17,7 @@ export default class AutoCompleteText extends React.Component {
         const { text } = this.state;
         //this.cityList.push(<div id="city"><p>{text}</p><Api city={this.state.text}/></div>);
         this.setState(state => {
-            const name = state.name.concat(<div id="city"><p>{text}</p><Api city={this.state.text}/><Link to="city">city</Link></div>);
+            const name = state.name.concat(<div id="city"><p>{text}</p><Api city={this.state.text}/></div>);
 
             return {
                 name,
