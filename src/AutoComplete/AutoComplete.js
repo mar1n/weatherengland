@@ -1,5 +1,6 @@
 import React from 'react';
 import Api from '../Api/Api';
+import './AutoComplete.css';
 
 export default class AutoCompleteText extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class AutoCompleteText extends React.Component {
         const { text } = this.state;
         //this.cityList.push(<div id="city"><p>{text}</p><Api city={this.state.text}/></div>);
         this.setState(state => {
-        const name = state.name.concat(<div id="city"><p>{text}</p>{ <Api city={this.state.text}/>}&#8451;</div>);
+        const name = state.name.concat(<div className="city"><p>{text}</p><p>{ <Api city={this.state.text}/>}&#8451;</p></div>);
 
             return {
                 name,
