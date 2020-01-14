@@ -13,7 +13,7 @@ class Api extends React.Component {
     componentDidMount(props) {
         //console.log(this.props.city);
         const city = this.props.city;
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -35,14 +35,19 @@ class Api extends React.Component {
     }
 
     render() {
+        
         const { error, isLoaded, items } = this.state;
+        console.log(items.weather);
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                    Math.round(items.main.temp - 273.15) 
+                <>
+                    <p>{items.main.temp - 273.15}&#8451;</p><img src={require(`../icons/${items.weather[0].icon}.png`)} alt='empty' />
+
+                    </>
             );
         }
     }
