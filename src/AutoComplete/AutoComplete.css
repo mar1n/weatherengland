@@ -1,3 +1,51 @@
+.AutoCompleteText {
+    width: 375px;
+    box-shadow: 0 3px 20px 0 rgba(0,0,0,.06);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    margin: auto;
+    padding: 10px;
+  }
+  
+  .AutoCompleteText input {
+    width: 100%;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    padding: 10px 5px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .AutoCompleteText ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 5px;
+    background-color: #33cc33;
+    
+  }
+  
+  .AutoCompleteText ul::before {
+    content: "";
+  }
+  
+  .AutoCompleteText li {
+    padding: 10px;
+    background-color: #5cd65c;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .AutoCompleteText li:hover {
+    text-decoration: underline;
+    background-color: rgba(128, 128, 128 0.20);
+  }
+
 .city {
     display: grid;
     grid-template-columns: 1fr;
@@ -23,4 +71,10 @@
 
 .textInput:focus {
     background-color: #70db70;
+}
+
+.addButton {
+    background: linear-gradient(#5cd65c,#29a329);
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
 }
