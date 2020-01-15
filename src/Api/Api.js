@@ -35,8 +35,14 @@ class Api extends React.Component {
     }
 
     render() {
-        
+
         const { error, isLoaded, items } = this.state;
+        const date = new Date();
+        function degToCompass(num) {
+            let val = Math.floor((num / 22.5) + 0.5);
+            let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+            return arr[(val % 16)];
+        }
         console.log(items.weather);
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -45,9 +51,15 @@ class Api extends React.Component {
         } else {
             return (
                 <>
-                    <p>{items.main.temp - 273.15}&#8451;</p><img src={require(`../icons/${items.weather[0].icon}.png`)} alt='empty' />
-
-                    </>
+                    <h1 className='cityName'>{items.name}</h1>
+                    <h1 className='temperature'>{Math.round(items.main.temp - 273.15)}&#8451;</h1>
+                    <p className='icon'><img src={require(`../icons/${items.weather[0].icon}.png`)} alt='empty' /></p>
+                    <p className='description'>{items.weather[0].description}</p>
+                    <p className='sunrise'>Sunrise {`${new Date(items.sys.sunrise * 1000).getHours()}:${(new Date(items.sys.sunrise * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunrise * 1000).getMinutes()}am `}Sunset {`${new Date(items.sys.sunset * 1000).getHours()}:${(new Date(items.sys.sunset * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunset * 1000).getMinutes()}pm`}</p>
+                    <p className='humidity'>Humidity {items.main.humidity}% Wind {degToCompass(items.wind.deg)} {items.wind.speed * 2} mph</p>
+                    
+                    <p className='pressure'>Pressure {items.main.pressure} hPa</p>
+                </>
             );
         }
     }

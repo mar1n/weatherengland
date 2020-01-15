@@ -1,4 +1,22 @@
 .city {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.cityName {
+
+}
+
+.temperature {
+    margin: 0;
+}
+
+.description {
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.icon  {
+    margin: 0;
 }
