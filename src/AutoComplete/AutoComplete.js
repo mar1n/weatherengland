@@ -11,6 +11,7 @@ export default class AutoCompleteText extends React.Component {
             name: [],
             suggestions: [],
             text: '',
+            error: '',
         };
     }
     //Pass componet as property left={<contacts/>} read: Composition vs inheritance
@@ -45,9 +46,17 @@ export default class AutoCompleteText extends React.Component {
         if (value.length > 0) {
             const regex = new RegExp(`^${value}`, 'i');
             suggestions = items.sort().filter(v => regex.test(v));
-            console.log(suggestions);
+            if(suggestions.length === 0) {
+                console.log('test')
+                this.setState(() => ({error: 'Error: I don\'t know the name of this city!'}));
+                console.log(this.state.error);
+            } else {
+                this.setState(() => ({error: ''}))
+            }
+            
         }
         this.setState(() => ({ suggestions, text: value }));
+        
     }
 
     suggestionSelected(value) {
@@ -79,6 +88,7 @@ export default class AutoCompleteText extends React.Component {
 
             <div className="AutoCompleteText">
                 <input className='textInput' value={text} onChange={this.onTextChanged} type="text" placeholder="Enter city Name" />
+                {this.state.error && <p className='error'>{this.state.error}</p>}
                 {/* <input className='addButton' value="Add" onClick={this.addClick} type="submit" /> */}
                 <div>
                     {this.renderSuggestions()}
