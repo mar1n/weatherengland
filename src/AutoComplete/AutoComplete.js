@@ -86,7 +86,7 @@ export default class AutoCompleteText extends React.Component {
                     {this.renderSuggestions()}
                     <ul>
                         {this.state.name.map((item, index) => (
-                            <li key={item}>{item}
+                            <li key={index}>{item}
                                 <button
                                     className='deleteButton'
                                     type='button'

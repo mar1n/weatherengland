@@ -48,7 +48,7 @@ class Api extends React.Component {
                     <h1 className='cityName'>{items.name}</h1>
                     <h1 className='temperature'>{Math.round(items.main.temp - 273.15)}&#8451;</h1>
                     <p className='icon'><img src={require(`../icons/${items.weather[0].icon}.png`)} alt={items.weather[0].icon} /></p>
-                    <p className='description'>{items.weather[0].description}</p>
+                    <h2 className='description'>{items.weather[0].description}</h2>
                     <p className='sunrise'>Sunrise {`${new Date(items.sys.sunrise * 1000).getHours()}:${(new Date(items.sys.sunrise * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunrise * 1000).getMinutes()}am `}Sunset {`${new Date(items.sys.sunset * 1000).getHours()}:${(new Date(items.sys.sunset * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunset * 1000).getMinutes()}pm`}</p>
                     <p className='humidity'>Humidity {items.main.humidity}% Wind {degToCompass(items.wind.deg)} {items.wind.speed * 2} mph</p>
                     <p className='pressure'>Pressure {items.main.pressure} hPa</p>
