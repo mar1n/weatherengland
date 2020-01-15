@@ -51,10 +51,15 @@ export default class AutoCompleteText extends React.Component {
     }
 
     suggestionSelected(value) {
-        this.setState(() => ({
-            text: value,
-            suggestions: [],
-        }))
+
+        this.setState(state => {
+            const name = state.name.concat(<div className="city">{<Api city={value} />}</div>);
+            return {
+                name,
+                text: '',
+                suggestions: [],
+            }
+        })
     }
 
     renderSuggestions() {
