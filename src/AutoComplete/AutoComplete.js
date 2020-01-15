@@ -5,8 +5,6 @@ import './AutoComplete.css';
 export default class AutoCompleteText extends React.Component {
     constructor(props) {
         super(props);
-
-        //this.cityList = [];
         this.state = {
             name: [],
             suggestions: [],
@@ -14,13 +12,10 @@ export default class AutoCompleteText extends React.Component {
             error: '',
         };
     }
-    //Pass componet as property left={<contacts/>} read: Composition vs inheritance
     addClick = () => {
         const { text } = this.state;
-        //this.cityList.push(<div id="city"><p>{text}</p><Api city={this.state.text}/></div>);
         this.setState(state => {
-            const name = state.name.concat(<div className="city">{<Api city={this.state.text} />}</div>);
-
+            const name = state.name.concat(<div className='city'>{<Api city={text} />}</div>);
             return {
                 name,
                 text: '',
@@ -32,7 +27,6 @@ export default class AutoCompleteText extends React.Component {
     deleteClick = i => {
         this.setState(state => {
             const name = state.name.filter((item, j) => i !== j);
-
             return {
                 name,
             };
@@ -47,9 +41,7 @@ export default class AutoCompleteText extends React.Component {
             const regex = new RegExp(`^${value}`, 'i');
             suggestions = items.sort().filter(v => regex.test(v));
             if(suggestions.length === 0) {
-                console.log('test')
                 this.setState(() => ({error: 'Error: I don\'t know the name of this city!'}));
-                console.log(this.state.error);
             } else {
                 this.setState(() => ({error: ''}))
             }
@@ -62,7 +54,7 @@ export default class AutoCompleteText extends React.Component {
     suggestionSelected(value) {
 
         this.setState(state => {
-            const name = state.name.concat(<div className="city">{<Api city={value} />}</div>);
+            const name = state.name.concat(<div className='city'>{<Api city={value} />}</div>);
             return {
                 name,
                 text: '',
@@ -78,7 +70,7 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)} key={item}>{item}</li>)}
             </ul>
         );
     }
@@ -86,8 +78,8 @@ export default class AutoCompleteText extends React.Component {
         const { text } = this.state;
         return (
 
-            <div className="AutoCompleteText">
-                <input className='textInput' value={text} onChange={this.onTextChanged} type="text" placeholder="Enter city Name" />
+            <div className='AutoCompleteText'>
+                <input className='textInput' value={text} onChange={this.onTextChanged} type='text' placeholder='Enter city name' />
                 {this.state.error && <p className='error'>{this.state.error}</p>}
                 {/* <input className='addButton' value="Add" onClick={this.addClick} type="submit" /> */}
                 <div>
@@ -96,20 +88,17 @@ export default class AutoCompleteText extends React.Component {
                         {this.state.name.map((item, index) => (
                             <li key={item}>{item}
                                 <button
-                                    type="button"
+                                    className='deleteButton'
+                                    type='button'
                                     onClick={() => this.deleteClick(index)}
                                 >
-                                    Remove
+                                    Delete
                             </button>
                             </li>
                         ))}
                     </ul>
                 </div>
-
-
-
             </div>
-
         )
     }
 }

@@ -78,6 +78,13 @@
     margin: 5px 0px 5px 0px;
 }
 
+.deleteButton {
+    background: linear-gradient(#ff0000, #ff6666);
+    padding: 10px;
+    border: 0px;
+    color: #ffffff;
+}
+
 .error {
     color: red;
     background-color: chartreuse;
