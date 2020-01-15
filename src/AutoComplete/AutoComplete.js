@@ -73,8 +73,8 @@ export default class AutoCompleteText extends React.Component {
         return (
 
             <div className="AutoCompleteText">
-                <input value={text} onChange={this.onTextChanged} type="text" />
-                <input value="Add" onClick={this.addClick} type="submit" />
+                <input className='textInput' value={text} onChange={this.onTextChanged} type="text" />
+                <input className='addButton' value="Add" onClick={this.addClick} type="submit" />
                 <div>
                     {this.renderSuggestions()}
                     <ul>

@@ -20,3 +20,7 @@
 .icon  {
     margin: 0;
 }
+
+.textInput:focus {
+    background-color: #70db70;
+}
