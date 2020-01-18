@@ -555,6 +555,7 @@ Llanwrtyd Wells
 Loanhead
 Lochgilphead
 Lockerbie
+London
 Londonderry
 Long Eaton
 Longridge
