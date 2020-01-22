@@ -40,15 +40,15 @@ export default class AutoCompleteText extends React.Component {
         if (value.length > 0) {
             const regex = new RegExp(`^${value}`, 'i');
             suggestions = items.sort().filter(v => regex.test(v));
-            if(suggestions.length === 0) {
-                this.setState(() => ({error: 'Error: I don\'t know the name of this city!'}));
+            if (suggestions.length === 0) {
+                this.setState(() => ({ error: 'Error: I don\'t know the name of this city!' }));
             } else {
-                this.setState(() => ({error: ''}))
+                this.setState(() => ({ error: '' }))
             }
-            
+
         }
         this.setState(() => ({ suggestions, text: value }));
-        
+
     }
 
     suggestionSelected(value) {
@@ -77,28 +77,29 @@ export default class AutoCompleteText extends React.Component {
     render() {
         const { text } = this.state;
         return (
-
-            <div className='AutoCompleteText'>
-                <input className='textInput' value={text} onChange={this.onTextChanged} type='text' placeholder='Enter city name only from United Kingdom' />
-                {this.state.error && <p className='error'>{this.state.error}</p>}
-                {/* <input className='addButton' value="Add" onClick={this.addClick} type="submit" /> */}
-                <div>
-                    {this.renderSuggestions()}
-                    <ul>
-                        {this.state.name.map((item, index) => (
-                            <li key={index}>{item}
-                                <button
-                                    className='deleteButton'
-                                    type='button'
-                                    onClick={() => this.deleteClick(index)}
-                                >
-                                    Delete
+            <section>
+                <div className='AutoCompleteText'>
+                    <input className='textInput' value={text} onChange={this.onTextChanged} type='text' placeholder='Enter city name only from United Kingdom' />
+                    {this.state.error && <p className='error'>{this.state.error}</p>}
+                    {/* <input className='addButton' value="Add" onClick={this.addClick} type="submit" /> */}
+                    <div>
+                        {this.renderSuggestions()}
+                        <ul>
+                            {this.state.name.map((item, index) => (
+                                <li key={index}>{item}
+                                    <button
+                                        className='deleteButton'
+                                        type='button'
+                                        onClick={() => this.deleteClick(index)}
+                                    >
+                                        Delete
                             </button>
-                            </li>
-                        ))}
-                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
         )
     }
 }
