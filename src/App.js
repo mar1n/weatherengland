@@ -1,19 +1,19 @@
 import React from 'react';
 import './App.css';
-import AutoComplete from './AutoComplete/AutoComplete';
+import AutoComplete2 from './AutoComplete/AutoComplete';
 import UkCities from './UkCities/UkCities';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
-  return (
+const  App = () => 
+   (
     <main>
       <Router>
         <div className='App'>
-          <AutoComplete items={UkCities} />
+          <AutoComplete2 items={UkCities} />
         </div>
       </Router>
     </main>
   );
-}
+
 
 export default App;

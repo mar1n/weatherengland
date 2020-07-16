@@ -1,63 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import degToCompass from "./Helper";
 
-class Api extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: []
-        };
-    }
+const Api = (props) => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState([]);
 
-    componentDidMount(props) {
-        //console.log(this.props.city);
-        const city = this.props.city;
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
-
-    render() {
-        const { error, isLoaded, items } = this.state;
-        function degToCompass(num) {
-            let val = Math.floor((num / 22.5) + 0.5);
-            let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-            return arr[(val % 16)];
-        }
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            return (
-                <>
-                    <section>
-                        <h1 className='cityName'>{items.name}</h1>
-                        <h1 className='temperature'>{Math.round(items.main.temp - 273.15)}&#8451;</h1>
-                        <p className='icon'><img src={require(`../icons/${items.weather[0].icon}.png`)} alt={items.weather[0].icon} /></p>
-                        <h2 className='description'>{items.weather[0].description}</h2>
-                        <p className='sunrise'>Sunrise {`${new Date(items.sys.sunrise * 1000).getHours()}:${(new Date(items.sys.sunrise * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunrise * 1000).getMinutes()}am `}Sunset {`${new Date(items.sys.sunset * 1000).getHours()}:${(new Date(items.sys.sunset * 1000).getMinutes() < 10 ? '0' : '') + new Date(items.sys.sunset * 1000).getMinutes()}pm`}</p>
-                        <p className='humidity'>Humidity {items.main.humidity}% Wind {degToCompass(items.wind.deg)} {items.wind.speed * 2} mph</p>
-                        <p className='pressure'>Pressure {items.main.pressure} hPa</p>
-                    </section>
-                </>
-            );
-        }
-    }
-}
+  useEffect(() => {
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&mode=json&units=metric,uk&APPID=86cf7b40142a1bc1aca8a976db7133ce`;
+    fetch(api)
+      .then((res) => res.json())
+      .then(
+        (result) => setData(result),
+        (error) => setError(error)
+      )
+      .finally(() => setIsLoaded(true));
+  }, []);
+  return error ? (
+    <div>Error: {error.message}</div>
+  ) : !isLoaded ? (
+    <div>Loading...</div>
+  ) : (
+    <>
+      <section>
+        <h1 className="cityName">{data.name}</h1>
+        <h1 className="temperature">
+          {Math.round(data.main.temp - 273.15)}&#8451;
+        </h1>
+        <p className="icon">
+          <img
+            src={require(`../icons/${data.weather[0].icon}.png`)}
+            alt={data.weather[0].icon}
+          />
+        </p>
+        <h2 className="description">{data.weather[0].description}</h2>
+        <p className="sunrise">
+          Sunrise{" "}
+          {`${new Date(data.sys.sunrise * 1000).getHours()}:${
+            (new Date(data.sys.sunrise * 1000).getMinutes() < 10 ? "0" : "") +
+            new Date(data.sys.sunrise * 1000).getMinutes()
+          }am `}
+          Sunset{" "}
+          {`${new Date(data.sys.sunset * 1000).getHours()}:${
+            (new Date(data.sys.sunset * 1000).getMinutes() < 10 ? "0" : "") +
+            new Date(data.sys.sunset * 1000).getMinutes()
+          }pm`}
+        </p>
+        <p className="humidity">
+          Humidity {data.main.humidity}% Wind {degToCompass(data.wind.deg)}{" "}
+          {data.wind.speed * 2} mph
+        </p>
+        <p className="pressure">Pressure {data.main.pressure} hPa</p>
+      </section>
+    </>
+  );
+};
 
 export default Api;
