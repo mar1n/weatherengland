@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
-import Api2 from '../Api/Api';
+import Api from '../Api/Api';
 import './AutoComplete.css';
 
-const AutoCompleteText = (props) => {
-    const [name, setName] = useState([]);
-    const [suggestions, setSuggestions] = useState([]);
-    const [text, setText] = useState('');
-    const [error, setError] = useState('');
+interface IProps {
+    items: string[];
+}
 
-   const  deleteClick = i => {
+const AutoCompleteText: React.FC<IProps> = (props) => {
+    const [name, setName] = useState<string[]>([]);
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [text, setText] = useState<string>('');
+    const [error, setError] = useState<string>('');
+
+   const  deleteClick = (i: number)=> {
         setName(name.filter((item, j) => i !== j))
     };
 
-    const onTextChanged = (e) => {
+    const onTextChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
         const items  = props.items;
         const value = e.target.value;
-        let suggestions = [];
+        let suggestions: string[] = [];
         if (value.length > 0) {
             const regex = new RegExp(`^${value}`, 'i');
             suggestions = items.sort().filter(v => regex.test(v));
@@ -30,7 +34,7 @@ const AutoCompleteText = (props) => {
         setText(value)
     }
 
-    const suggestionSelected = (value) => {
+    const suggestionSelected = (value: string) => {
         setName(name.concat(value));
         setText('');
         setSuggestions([])
@@ -57,7 +61,7 @@ const AutoCompleteText = (props) => {
                     <ul>
                         {name.map((item, index) => (
                             <li key={index}>
-                                <div className='city'>{<Api2 city={item} />}</div>
+                                <div className='city'>{<Api city={item} />}</div>
                                 <button
                                     className='deleteButton'
                                     type='button'
