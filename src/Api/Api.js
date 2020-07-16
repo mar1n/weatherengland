@@ -15,7 +15,7 @@ const Api = (props) => {
         (error) => setError(error)
       )
       .finally(() => setIsLoaded(true));
-  }, []);
+  }, [props.city]);
   return error ? (
     <div>Error: {error.message}</div>
   ) : !isLoaded ? (

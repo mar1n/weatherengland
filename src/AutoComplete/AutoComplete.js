@@ -8,11 +8,6 @@ const AutoCompleteText = (props) => {
     const [text, setText] = useState('');
     const [error, setError] = useState('');
 
-    const addClick = () => {
-        setName(name.concat(text));
-        setText('');
-    }
-
    const  deleteClick = i => {
         setName(name.filter((item, j) => i !== j))
     };
