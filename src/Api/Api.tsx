@@ -5,12 +5,6 @@ interface IProps {
     city: string;
 }
 
-interface IState {
-    error: null | any;
-    isLoaded: boolean;
-    items: any;
-}
-
 
 
 const Api: React.FC<IProps> = (props) => {
