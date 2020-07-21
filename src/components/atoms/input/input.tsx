@@ -1,11 +1,11 @@
 import React from "react";
 
-interface IProps {
+interface InputProps {
     text: string;
     onTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<IProps> = ({ text, onTextChange }) => (
+const Input: React.FC<InputProps> = ({ text, onTextChange }) => (
   <input
     className="textInput"
     value={text}
