@@ -7,6 +7,7 @@ const buttonClicked = (e: any) => {
 }
 
 export const basicButton = () => <Button>Basic button</Button>;
+export const iconButton = () => <Button icon="user">Icon button</Button>;
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
 );
