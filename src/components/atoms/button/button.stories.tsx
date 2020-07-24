@@ -1,4 +1,6 @@
 import React from "react";
+import { withKnobs, text } from "@storybook/addon-knobs";
+
 import Button  from "./button";
 
 const buttonClicked = (e: any) => {
@@ -6,7 +8,7 @@ const buttonClicked = (e: any) => {
     alert('Hello');
 }
 
-export const basicButton = () => <Button>Basic button</Button>;
+export const basicButton = () => <Button>{text("Button text", "Basic button")}</Button>;
 export const iconButton = () => <Button icon="user">Icon button</Button>;
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
@@ -20,5 +22,6 @@ export const functionButton = () => (
 export const linkedButton = () => <Button href="/route">Linked button</Button>;
 
 export default {
-    title: "Button"
+    title: "Button",
+    decorators: [withKnobs]
 }
