@@ -4,7 +4,7 @@ import Input from './input';
 
 
 export default {
-    title: 'Input',
+    title: 'Atoms|Input',
   };
 export const Search = () => <Input onTextChange={action("changed")} text="text" />
 // storiesOf("Input Search", module)

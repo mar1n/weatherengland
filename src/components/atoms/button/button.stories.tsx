@@ -40,6 +40,6 @@ basicButton.story = {
   }
 
 export default {
-    title: "Button",
+    title: "Atoms|Button",
     decorators: [withDesign]
 }
