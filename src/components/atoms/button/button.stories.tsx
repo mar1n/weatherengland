@@ -1,5 +1,7 @@
 import React from "react";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withDesign } from 'storybook-addon-designs'
+
 
 import Button  from "./button";
 
@@ -12,8 +14,10 @@ const buttonClicked = (e: any) => {
     alert('Hello');
 }
 
-export const basicButton = () => <Button>{text("Button text", "Basic button")}</Button>;
-export const iconButton = () => <Button icon={select(icon.label, icon.options, icon.default, icon.group)}>{text("Others", "Icon button")}</Button>;
+export const basicButton = () => <Button>Basic button</Button>;
+export const iconButton = () => 
+<Button icon="bag">
+    Icon Button</Button>;
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
 );
@@ -25,7 +29,17 @@ export const functionButton = () => (
 );
 export const linkedButton = () => <Button href="/route">Linked button</Button>;
 
+basicButton.story = {
+    name: 'My awesome story',
+    parameters: {
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File',
+      },
+    },
+  }
+
 export default {
     title: "Button",
-    decorators: [withKnobs]
+    decorators: [withDesign]
 }
