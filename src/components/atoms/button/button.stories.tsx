@@ -1,7 +1,11 @@
 import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
 
 import Button  from "./button";
+
+
+import knobs from './button.knobs.json'
+const { icon } = knobs;
 
 const buttonClicked = (e: any) => {
     e.preventDefault();
@@ -9,7 +13,7 @@ const buttonClicked = (e: any) => {
 }
 
 export const basicButton = () => <Button>{text("Button text", "Basic button")}</Button>;
-export const iconButton = () => <Button icon="user">Icon button</Button>;
+export const iconButton = () => <Button icon={select(icon.label, icon.options, icon.default, icon.group)}>{text("Others", "Icon button")}</Button>;
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
 );
