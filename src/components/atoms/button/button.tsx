@@ -20,6 +20,7 @@ interface ButtonProps {
     onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
     variant?: string;
     icon?: string;
+    target?: string;
 }
 interface IconProps {
     name: string;

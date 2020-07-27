@@ -13,6 +13,6 @@ export const standardFooter = () => (
 )
 
 export default {
-    title: "Organisms|Footer",
+    title: "Organisms|Header",
     decorators: [withKnobs]
 }
