@@ -5,7 +5,7 @@ import Button from "../../atoms/button/button";
 import Logo from "../../../../assets/images/logo.png";
 
 interface HeaderProps {
-  navigation: any;
+  navigation?: any;
 }
 
 interface Navigationtype {

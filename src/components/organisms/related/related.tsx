@@ -10,7 +10,7 @@ import Intro from "../../molecules/intro/intro";
 interface RelatedProps {
 	intro: any;
 	items: string[];
-	variant: string;
+	variant?: string;
 }
 
 const Related: React.FC<RelatedProps> = ({ intro, items, variant }) => {

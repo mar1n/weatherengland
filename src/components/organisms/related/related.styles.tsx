@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledRelated = styled.section<{variant: string;}>`
+export const StyledRelated = styled.section<{variant?: string;}>`
 	margin-left: calc(-50vw + 50%);
 	margin-right: calc(-50vw + 50%);
 	padding: 64px 30px;

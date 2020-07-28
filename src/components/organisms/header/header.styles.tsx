@@ -45,7 +45,7 @@ const headerPosition = (props: any) => {
 	return position;
 };
 
-export const StyledHeader = styled.header<{variant: string}>`
+export const StyledHeader = styled.header<{variant?: string}>`
 	align-items: center;
 	display: flex;
 	left: ${props => (props.variant ? `0` : undefined)};
