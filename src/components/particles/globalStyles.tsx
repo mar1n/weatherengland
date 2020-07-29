@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
 	p {
 		a {
-			color: ${props => props.theme.primary};
+			color: ${(props: any) => props.theme.primary};
 
 			&:active,
 			&:focus,

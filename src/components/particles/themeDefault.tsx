@@ -1,4 +1,4 @@
-const themeDefault = {
+export const themeDefault = {
 	gridMax: "1440px",
 	/* Colours */
 	white: "#ffffff",

@@ -1,13 +1,8 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { withDesign } from 'storybook-addon-designs'
 
 
 import Button  from "./button";
-
-
-import knobs from './button.knobs.json'
-const { icon } = knobs;
 
 const buttonClicked = (e: any) => {
     e.preventDefault();

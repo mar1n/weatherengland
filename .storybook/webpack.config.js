@@ -18,20 +18,15 @@ module.exports = ({ config }) => {
     use: ["@svgr/webpack"],
   });
 
-  config.module.rules.unshift({
-    test: /\.tsx$/,
-    use: [
-      {
-        loader: require.resolve("babel-loader"),
-        options: {
-          presets: ["react-app"],
-        },
-      },
-    ],
-    include: [
-      path.join(path.dirname(__dirname), "node_modules/gatsby/cache-dir"),
-    ],
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      presets: [['react-app', { flow: false, typescript: true }]],
+    },
   });
-
+  config.resolve.extensions.push('.ts', '.tsx');
+  
   return config;
+
 };

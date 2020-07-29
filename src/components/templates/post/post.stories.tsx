@@ -1,7 +1,5 @@
 import React from "react";
-import { withKnobs, array, select, object } from "@storybook/addon-knobs";
-
-import Post from "./post";
+import { withKnobs, object } from "@storybook/addon-knobs";
 
 import knobs from "./post.knobs.json";
 import PostTemplate from "./post";

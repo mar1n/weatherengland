@@ -1,5 +1,4 @@
 import React from "react";
-import { shape, string } from "prop-types";
 
 import StyledIntro from "./intro.styles";
 interface IntroProps {

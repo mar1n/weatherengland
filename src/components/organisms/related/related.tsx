@@ -1,5 +1,4 @@
 import React from "react";
-import { array, object, shape, string, arrayOf } from "prop-types";
 
 import StyledRelated from "./related.styles";
 
